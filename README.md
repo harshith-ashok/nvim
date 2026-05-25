@@ -15,10 +15,10 @@
 
 ## Keybinding Changes
 
-- <leader>e -> :NvimTreeFocus
-- <leader>. -> :bnext
-- <leader>, -> :bprevious
-- <leader>x -> :bdelete
+- `<leader>e` -> :NvimTreeFocus
+- `<leader>.` -> :bnext
+- `<leader>,` -> :bprevious
+- `<leader>x` -> :bdelete
 
 ## Screenshot
 

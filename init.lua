@@ -38,6 +38,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 
 require("lazy").setup({
+    -- Icons
+    { "nvim-tree/nvim-web-devicons", opts = {} },
     -- Buffer
     {
         "akinsho/bufferline.nvim",

@@ -16,8 +16,9 @@ vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
 
 -- Plain black background
-vim.cmd("colorscheme default")
+-- vim.cmd("colorscheme default")
 -- vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
+vim.opt.background = 'dark'
 vim.cmd("syntax on")
 
 -- Bootstrap lazy.nvim
@@ -207,18 +208,36 @@ require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
     },
-
-    -- Aura Theme
-    {
-    "baliestri/aura-theme",
+ {
+    "rose-pine/neovim",
+    name = "rose-pine",
     lazy = false,
     priority = 1000,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-      vim.cmd([[colorscheme aura-dark]])
-    end
+    config = function()
+      require("rose-pine").setup({
+        variant = "main", -- Use the default dark variant
+        styles = {
+          italic = true,
+          transparency = false, -- Disable built-in transparency to force solid black
+        },
+        highlight_groups = {
+          -- Force core UI elements to use pitch black
+          Normal = { bg = "#000000" },
+          NormalFloat = { bg = "#000000" },
+          StatusLine = { bg = "#000000" },
+          SignColumn = { bg = "#000000" },
+          
+          -- Optional: Fix sidebar/panel plugins if you use them
+          NemoTreeNormal = { bg = "#000000" },
+          NeoTreeNormalNC = { bg = "#000000" },
+          NvimTreeNormal = { bg = "#000000" },
+        },
+      })
+
+      vim.cmd("colorscheme rose-pine")
+    end,
   },
-    -- Autocomplete
+  -- Autocomplete
     {
         "hrsh7th/nvim-cmp",
         dependencies = {

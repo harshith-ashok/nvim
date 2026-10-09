@@ -2,13 +2,14 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
-            "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons",
+            "lewis6991/gitsigns.nvim",
         },
 
         config = function()
             require("lualine").setup({
                 options = {
-                    theme = "palenight",
+                    theme = "reference",
 
                     section_separators = {
                         left = "",
@@ -26,10 +27,24 @@ return {
                 sections = {
                     lualine_a = { "mode" },
                     lualine_b = { "branch", "diff" },
-                    lualine_c = { "filename" },
+                    lualine_c = {
+                        {
+                            "filename",
+                            path = 1,
+                            symbols = { modified = " ●", readonly = " " },
+                        },
+                    },
 
                     lualine_x = {
-                        "encoding",
+                        {
+                            "diagnostics",
+                            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+                        },
+                        {
+                            "lsp_status",
+                            icon = "",
+                            symbols = { done = "", separator = " " },
+                        },
                         "filetype",
                     },
 

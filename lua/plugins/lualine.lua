@@ -9,7 +9,7 @@ return {
         config = function()
             require("lualine").setup({
                 options = {
-                    theme = "reference",
+                    theme = "gruvbox",
 
                     section_separators = {
                         left = "",

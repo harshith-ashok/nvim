@@ -16,7 +16,7 @@ return {
                     folds = true,
                 },
                 bold = true,
-                transparent_mode = false,
+                transparent_mode = true,
             })
 
             vim.o.background = "dark"
